@@ -57,7 +57,7 @@ class Application(Frame):
         
         self.high_score_label = Label(self, text = "Enter your name here:")
         self.high_score_label.grid(row = 10, column = 12)
-        self.high_score_ent = Entry(self, width = 10, fg = "#00f6ff", bg = "Black")
+        self.high_score_ent = Entry(self, width = 10, fg = "White", bg = "Green")
         self.high_score_ent.grid(row = 10, column = 13)
         self.var = IntVar()
         self.done_bttn = Button(self, text = "Done", padx = 50, pady = 5, command = lambda: self.var.set(1))
@@ -164,14 +164,14 @@ class Application(Frame):
         if Battleship.new_game.hits == 15:
             if len(Battleship.read_file("high_score.json")) < 10:
                 self.output_txt.delete(0.0, END)
-                self.output_txt.insert(0.0, "You got a high score! Enter your name into the black box to get on the"
+                self.output_txt.insert(0.0, "You got a high score! Enter your name into the green box to get on the"
                                             " leaderboard!")
                 Battleship.update_file("high_score.json", Battleship.new_game.high_score(),
                                        Battleship.read_file("high_score.json"), self.get_entry())
             else:
                 if Battleship.new_game.high_score() > list(Battleship.read_file("high_score.json").values())[9]:
                     self.output_txt.delete(0.0, END)
-                    self.output_txt.insert(0.0, "You got a high score! Enter your name into the black box to get on"
+                    self.output_txt.insert(0.0, "You got a high score! Enter your name into the green box to get on"
                                                 " the leaderboard!")
                     Battleship.update_file("high_score.json", Battleship.new_game.high_score(),
                                            Battleship.read_file("high_score.json"), self.get_entry())
